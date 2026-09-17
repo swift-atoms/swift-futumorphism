@@ -9,8 +9,8 @@ let package = Package(
         .library(name: "Futumorphism Macro Core", targets: ["Futumorphism Macro Core"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-molecules/swift-corecursive.git", branch: "main"),
-        .package(url: "https://github.com/swift-molecules/swift-free.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-corecursive.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-free.git", branch: "main"),
         .package(url: "https://github.com/swiftlang/swift-syntax.git", "603.0.2"..<"604.0.0"),
     ],
     targets: [
