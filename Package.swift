@@ -3,33 +3,33 @@ import CompilerPluginSupport
 import PackageDescription
 
 let package = Package(
-    name: "swift-futumorphism-derivation",
+    name: "swift-futumorphism",
     products: [
-        .library(name: "Futumorphism Derivation", targets: ["Futumorphism Derivation"]),
-        .library(name: "Futumorphism Derivation Core", targets: ["Futumorphism Derivation Core"]),
+        .library(name: "Futumorphism Macro", targets: ["Futumorphism Macro"]),
+        .library(name: "Futumorphism Macro Core", targets: ["Futumorphism Macro Core"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-molecules/swift-corecursive-derivation.git", branch: "main"),
-        .package(url: "https://github.com/swift-molecules/swift-free-derivation.git", branch: "main"),
+        .package(url: "https://github.com/swift-molecules/swift-corecursive.git", branch: "main"),
+        .package(url: "https://github.com/swift-molecules/swift-free.git", branch: "main"),
         .package(url: "https://github.com/swiftlang/swift-syntax.git", "603.0.2"..<"604.0.0"),
     ],
     targets: [
-        .target(name: "Futumorphism Derivation Core", dependencies: [
-            .product(name: "Corecursive Derivation Core", package: "swift-corecursive-derivation"),
-            .product(name: "Free Derivation Core", package: "swift-free-derivation"),
+        .target(name: "Futumorphism Macro Core", dependencies: [
+            .product(name: "Corecursive Macro Core", package: "swift-corecursive"),
+            .product(name: "Free Macro Core", package: "swift-free"),
             .product(name: "SwiftSyntax", package: "swift-syntax"),
             .product(name: "SwiftSyntaxBuilder", package: "swift-syntax"),
         ]),
-        .macro(name: "Futumorphism Derivation Macros", dependencies: [
-            "Futumorphism Derivation Core",
+        .macro(name: "Futumorphism Macro Plugin", dependencies: [
+            "Futumorphism Macro Core",
             .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
             .product(name: "SwiftSyntax", package: "swift-syntax"),
             .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
         ]),
-        .target(name: "Futumorphism Derivation", dependencies: ["Futumorphism Derivation Macros"]),
+        .target(name: "Futumorphism Macro", dependencies: ["Futumorphism Macro Plugin"]),
         .testTarget(
-            name: "Futumorphism Derivation Tests",
-            dependencies: ["Futumorphism Derivation"]
+            name: "Futumorphism Macro Tests",
+            dependencies: ["Futumorphism Macro"]
         ),
     ],
     swiftLanguageModes: [.v6]

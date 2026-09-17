@@ -1,4 +1,4 @@
-import Futumorphism_Derivation_Core
+import Futumorphism_Macro_Core
 import SwiftSyntax
 import SwiftSyntaxMacros
 public struct Macro: MemberMacro {

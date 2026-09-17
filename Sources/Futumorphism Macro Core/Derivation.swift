@@ -1,12 +1,12 @@
-import Corecursive_Derivation_Core
-import Free_Derivation_Core
+import Corecursive_Macro_Core
+import Free_Macro_Core
 public import SwiftSyntax
 import SwiftSyntaxBuilder
 
 public enum Derivation {
     public static func expansion(of declaration: EnumDeclSyntax) -> [DeclSyntax] {
-        Corecursive_Derivation_Core.Derivation.expansion(of: declaration)
-            + Free_Derivation_Core.Derivation.carrier(of: declaration)
+        Corecursive_Macro_Core.Derivation.expansion(of: declaration)
+            + Free_Macro_Core.Derivation.carrier(of: declaration)
             + operation(of: declaration)
     }
 
