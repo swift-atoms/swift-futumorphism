@@ -1,6 +1,12 @@
+import Corecursive_Macro
+import Free_Macro
+import Functor_Base_Macro
 import Futumorphism_Macro
 import Testing
 
+@Corecursive
+@Free
+@FunctorBase
 @Futumorphism
 private indirect enum Natural {
     case zero
