@@ -16,7 +16,7 @@ private indirect enum Count {
 private func depth(_ value: Count) -> Int {
     switch value {
     case .zero: 0
-    case let .successor(child): depth(child) + 1
+    case .successor(let child): depth(child) + 1
     }
 }
 
