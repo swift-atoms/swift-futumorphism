@@ -20,19 +20,23 @@ private func depth(_ value: Count) -> Int {
     }
 }
 
-@Suite
-struct `Futumorphism boundaries` {
-    @Test
-    func `a seed that stops at once unfolds to the base case`() {
-        let value = Count.futumorphism(0) { _ -> Count.Base<Count.Free<Int>> in .zero }
-        #expect(depth(value) == 0)
-    }
+enum `Boundary Tests` {}
 
-    @Test
-    func `plain seeds unfold one layer at a time`() {
-        let value = Count.futumorphism(5) { seed -> Count.Base<Count.Free<Int>> in
-            seed == 0 ? .zero : .successor(.pure(seed - 1))
+extension `Boundary Tests` {
+    @Suite
+    struct `Futumorphism boundaries` {
+        @Test
+        func `a seed that stops at once unfolds to the base case`() {
+            let value = Count.futumorphism(0) { _ -> Count.Base<Count.Free<Int>> in .zero }
+            #expect(depth(value) == 0)
         }
-        #expect(depth(value) == 5)
+
+        @Test
+        func `plain seeds unfold one layer at a time`() {
+            let value = Count.futumorphism(5) { seed -> Count.Base<Count.Free<Int>> in
+                seed == 0 ? .zero : .successor(.pure(seed - 1))
+            }
+            #expect(depth(value) == 5)
+        }
     }
 }
